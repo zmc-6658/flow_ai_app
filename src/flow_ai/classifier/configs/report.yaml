@@ -1,0 +1,24 @@
+doc_type: report
+structural_rules:
+  - name: chapter_dun
+    pattern: '^\s*[一二三四五六七八九十]+[、．.]\s*[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_1
+    level: 1
+    confidence: 0.95
+  - name: section_decimal
+    pattern: '^\s*\d+\.\d+\s+[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_2
+    level: 2
+    confidence: 0.85
+special_anchors:
+  - pattern: '^\s*(Executive\s+Summary|摘要|概述)\s*$'
+    role: ABSTRACT_ANCHOR
+    semantic_role: abstract
+    confidence: 0.99
+  - pattern: '^\s*Conclusion\s*$'
+    role: BACK_ANCHOR
+    semantic_role: body
+    confidence: 0.90
+toc_markers:
+  - '^\s*Table\s+of\s+Contents\s*$'
+  - '^\s*目\s*录\s*$'

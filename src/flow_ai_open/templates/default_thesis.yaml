@@ -1,0 +1,227 @@
+rules:
+  - id: generated_toc_anchor
+    selector:
+      node_kind: generated_anchor
+      anchor_type: toc
+    apply:
+      generated_anchor_type: toc
+      generated_anchor_text: "[TOC will be generated here]"
+      style_name: FlowTocPlaceholder
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 12
+      bold: true
+      alignment: center
+      space_before_pt: 12
+      space_after_pt: 12
+    priority: 20
+
+  - id: opaque_placeholder
+    selector:
+      node_kind: opaque
+    apply:
+      opaque_placeholder_text: "[UNSUPPORTED OPAQUE: {opaque_type}]"
+      style_name: FlowOpaquePlaceholder
+      font_name: SimSun
+      east_asia_font: SimSun
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 10.5
+      alignment: center
+      space_before_pt: 6
+      space_after_pt: 6
+    priority: 1
+
+  - id: body_paragraph
+    selector:
+      node_kind: paragraph
+      region: body
+    apply:
+      style_name: FlowBody
+      font_name: SimSun
+      east_asia_font: SimSun
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 12
+      alignment: justify
+      first_line_indent_pt: 24
+      line_spacing_multiple: 1.5
+      space_after_pt: 6
+    priority: 1
+
+  - id: front_paragraph
+    selector:
+      node_kind: paragraph
+      region: front
+    apply:
+      style_name: FlowFrontParagraph
+      font_name: SimSun
+      east_asia_font: SimSun
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 12
+      alignment: justify
+      line_spacing_multiple: 1.5
+      space_after_pt: 6
+    priority: 1
+
+  - id: back_paragraph
+    selector:
+      node_kind: paragraph
+      region: back
+    apply:
+      style_name: FlowBackParagraph
+      font_name: SimSun
+      east_asia_font: SimSun
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 10.5
+      alignment: justify
+      hanging_indent_pt: 21
+      line_spacing_multiple: 1.25
+      space_after_pt: 3
+    priority: 1
+
+  - id: heading_level_1
+    selector:
+      node_kind: heading
+      level: 1
+    apply:
+      style_name: FlowHeading1
+      outline_level: 0
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 16
+      bold: true
+      alignment: center
+      space_before_pt: 12
+      space_after_pt: 12
+      keep_with_next: true
+    priority: 1
+
+  - id: heading_level_2
+    selector:
+      node_kind: heading
+      level: 2
+    apply:
+      style_name: FlowHeading2
+      outline_level: 1
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 14
+      bold: true
+      alignment: left
+      space_before_pt: 10
+      space_after_pt: 8
+      keep_with_next: true
+    priority: 1
+
+  - id: heading_level_3
+    selector:
+      node_kind: heading
+      level: 3
+    apply:
+      style_name: FlowHeading3
+      outline_level: 2
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 12
+      bold: true
+      alignment: left
+      space_before_pt: 8
+      space_after_pt: 6
+      keep_with_next: true
+    priority: 1
+
+  - id: abstract_heading
+    selector:
+      semantic_role: abstract
+    apply:
+      style_name: FlowAbstractHeading
+      outline_level: 0
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 14
+      bold: true
+      alignment: center
+      space_before_pt: 12
+      space_after_pt: 12
+    priority: 10
+
+  - id: toc_heading
+    selector:
+      semantic_role: toc
+    apply:
+      style_name: FlowTocHeading
+      outline_level: 0
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 14
+      bold: true
+      alignment: center
+      space_before_pt: 12
+      space_after_pt: 12
+    priority: 10
+
+  - id: references_heading
+    selector:
+      semantic_role: references
+    apply:
+      style_name: FlowReferencesHeading
+      outline_level: 0
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 14
+      bold: true
+      alignment: center
+      page_break_before: true
+      keep_with_next: true
+    priority: 10
+
+  - id: acknowledgment_heading
+    selector:
+      semantic_role: acknowledgment
+    apply:
+      style_name: FlowAcknowledgmentHeading
+      outline_level: 0
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 14
+      bold: true
+      alignment: center
+      page_break_before: true
+      keep_with_next: true
+    priority: 10
+
+  - id: appendix_heading
+    selector:
+      semantic_role: appendix
+    apply:
+      style_name: FlowAppendixHeading
+      outline_level: 0
+      font_name: SimHei
+      east_asia_font: SimHei
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      font_size_pt: 14
+      bold: true
+      alignment: center
+      page_break_before: true
+      keep_with_next: true
+    priority: 10

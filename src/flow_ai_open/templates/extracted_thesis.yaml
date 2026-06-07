@@ -1,0 +1,610 @@
+profile:
+  schema_version: rule_profile.v1
+  title: Extracted thesis rule profile
+  description: 机器从 Word 范文样式继承链提取的候选排版规则，供前端确权。
+  rules:
+  - id: title_cn
+    label: 中文主标题
+    description: 论文题名页中的中文主标题。
+    selector:
+      semantic_role: title_cn
+    intent:
+      alignment: center
+      first_line_indent_pt: 48.2
+      line_spacing_pt: 23.0
+      font_name: 黑体
+      font_size_pt: 24.0
+      bold: true
+      east_asia_font: 黑体
+      ascii_font: 黑体
+      hansi_font: Times New Roman
+      style_name: FlowTitleCN
+    readable:
+    - 中文字体：黑体
+    - 西文字体：黑体
+    - 字号：小一 (24.0 磅)
+    - 字形：加粗
+    - 对齐：居中
+    - 首行缩进：2.01 字符 (48.2 磅)
+    - 行距：固定值 23.0 磅
+    - 内部样式：FlowTitleCN
+    sample:
+      index: 2
+      text: 本科毕业论文
+    confidence: 0.78
+    evidence:
+    - '嗅探角色: title_cn'
+    - '样本段落序号: 2'
+    - '样式继承链: Normal'
+    sources:
+      alignment: direct paragraph
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      bold: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - Normal
+    priority: 30
+  - id: heading_level_1
+    label: 一级标题
+    description: 正文一级章节标题。
+    selector:
+      node_kind: heading
+      level: 1
+    intent:
+      alignment: center
+      space_after_pt: 31.2
+      first_line_indent_pt: 18.0
+      line_spacing_pt: 23.0
+      outline_level: 0
+      font_name: Times New Roman
+      font_size_pt: 16.0
+      east_asia_font: 黑体
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      style_name: FlowHeading1
+    readable:
+    - 中文字体：黑体
+    - 西文字体：Times New Roman
+    - 字号：三号 (16.0 磅)
+    - 对齐：居中
+    - 首行缩进：1.12 字符 (18.0 磅)
+    - 段后：31.2 磅
+    - 行距：固定值 23.0 磅
+    - 大纲级别：1 级
+    - 内部样式：FlowHeading1
+    sample:
+      index: 34
+      text: 1前 言
+    confidence: 0.72
+    evidence:
+    - '嗅探角色: h1'
+    - '样本段落序号: 34'
+    - '样式继承链: 章标题 -> Normal'
+    sources:
+      alignment: 章标题 -> Normal
+      space_after_pt: paragraph/style/default
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      outline_level: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - 章标题
+    - Normal
+    priority: 1
+  - id: heading_level_2
+    label: 二级标题
+    description: 正文二级小节标题。
+    selector:
+      node_kind: heading
+      level: 2
+    intent:
+      alignment: justify
+      space_before_pt: 7.8
+      first_line_indent_pt: 0.0
+      line_spacing_pt: 23.0
+      outline_level: 1
+      font_name: Times New Roman
+      font_size_pt: 12.0
+      east_asia_font: 黑体
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      style_name: FlowHeading2
+    readable:
+    - 中文字体：黑体
+    - 西文字体：Times New Roman
+    - 字号：小四 (12.0 磅)
+    - 对齐：两端对齐
+    - 段前：7.8 磅
+    - 行距：固定值 23.0 磅
+    - 大纲级别：2 级
+    - 内部样式：FlowHeading2
+    sample:
+      index: 35
+      text: 1.1选题背景
+    confidence: 0.68
+    evidence:
+    - '嗅探角色: h2'
+    - '样本段落序号: 35'
+    - '样式继承链: 节标题 -> Normal'
+    sources:
+      alignment: 节标题 -> Normal
+      space_before_pt: paragraph/style/default
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      outline_level: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - 节标题
+    - Normal
+    priority: 1
+  - id: body_paragraph
+    label: 正文段落
+    description: 正文区域中的普通段落。
+    selector:
+      node_kind: paragraph
+      region: body
+    intent:
+      alignment: justify
+      first_line_indent_pt: 24.0
+      line_spacing_pt: 23.0
+      font_name: Times New Roman
+      font_size_pt: 12.0
+      east_asia_font: 宋体
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      style_name: FlowBody
+    readable:
+    - 中文字体：宋体
+    - 西文字体：Times New Roman
+    - 字号：小四 (12.0 磅)
+    - 对齐：两端对齐
+    - 首行缩进：2 字符 (24.0 磅)
+    - 行距：固定值 23.0 磅
+    - 内部样式：FlowBody
+    sample:
+      index: 41
+      text: 基于其他海外市场的成功经验，UiPath全面进军中国市场， 推动机器人流程自动化，更多本地和国际的优秀合作伙伴携手，充分了解和把握中国客户的
+        RPA应用模式，从而打造在 金融、制造、医疗、物流和政府等各个行业中均可应用的、完整的RPA解决方案[3]。再结合当今社会疫情严重需要调动医护人员进行疫情防控，从而导致医院出现人员不足，无法完成任务考核。居民健康档案的建立也是一个技术低且重复性高的工作，人在做着重复性动作时很快就会出现精神疲惫，从而出现工作效率的降低，也很容易出现信息填写错误，导致健康档案建立出现不合格情况，而影响考核成绩。通过引入人工智能，我们发现在成本、效率、
+        准确率、业务流程等方面都给医院的工作带来变革。首先效率层面，数据上报的时限性更有保障，效率提升明显以前人工需要 1 分钟一条数据采集，现在仅需要 10
+        ～ 15s ；再者是减少错误率，并且可以设定错误阈值，发现错误时提供预警机制，保证了准确率[4]。
+    confidence: 0.72
+    evidence:
+    - '嗅探角色: body'
+    - '样本段落序号: 41'
+    - '样式继承链: Normal'
+    sources:
+      alignment: Normal
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - Normal
+    priority: 1
+  - id: keywords
+    label: 中文关键词
+    description: 中文关键词段落。
+    selector:
+      semantic_role: keywords
+    intent:
+      alignment: justify
+      first_line_indent_pt: 0.0
+      line_spacing_pt: 23.0
+      font_name: 黑体
+      font_size_pt: 16.0
+      bold: true
+      east_asia_font: 黑体
+      ascii_font: 黑体
+      hansi_font: 黑体
+      style_name: FlowKeywords
+    readable:
+    - 中文字体：黑体
+    - 西文字体：黑体
+    - 字号：三号 (16.0 磅)
+    - 字形：加粗
+    - 对齐：两端对齐
+    - 行距：固定值 23.0 磅
+    - 内部样式：FlowKeywords
+    sample:
+      index: 24
+      text: 关键词：人工智能；UiPath；vue；gin；居民健康档案
+    confidence: 0.66
+    evidence:
+    - '嗅探角色: keywords'
+    - '样本段落序号: 24'
+    - '样式继承链: Normal'
+    sources:
+      alignment: Normal
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      bold: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - Normal
+    priority: 20
+  - id: keywords_en
+    label: 英文关键词
+    description: 英文关键词段落。
+    selector:
+      semantic_role: keywords_en
+    intent:
+      alignment: justify
+      first_line_indent_pt: 0.0
+      line_spacing_pt: 23.0
+      font_name: Times New Roman
+      font_size_pt: 16.0
+      bold: true
+      east_asia_font: 宋体
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      style_name: FlowKeywordsEN
+    readable:
+    - 中文字体：宋体
+    - 西文字体：Times New Roman
+    - 字号：三号 (16.0 磅)
+    - 字形：加粗
+    - 对齐：两端对齐
+    - 行距：固定值 23.0 磅
+    - 内部样式：FlowKeywordsEN
+    sample:
+      index: 31
+      text: 'KEY WORDS: artificial intelligence; UiPath; vue; gin; resident health
+        records'
+    confidence: 0.66
+    evidence:
+    - '嗅探角色: keywords_en'
+    - '样本段落序号: 31'
+    - '样式继承链: Normal'
+    sources:
+      alignment: Normal
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      bold: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - Normal
+    priority: 20
+  - id: references_heading
+    label: 参考文献标题
+    description: 参考文献区域的标题。
+    selector:
+      semantic_role: references
+    intent:
+      alignment: center
+      space_after_pt: 31.2
+      first_line_indent_pt: 18.0
+      line_spacing_pt: 23.0
+      outline_level: 0
+      font_name: Times New Roman
+      font_size_pt: 16.0
+      east_asia_font: 黑体
+      ascii_font: Times New Roman
+      hansi_font: Times New Roman
+      style_name: FlowReferencesHeading
+    readable:
+    - 中文字体：黑体
+    - 西文字体：Times New Roman
+    - 字号：三号 (16.0 磅)
+    - 对齐：居中
+    - 首行缩进：1.12 字符 (18.0 磅)
+    - 段后：31.2 磅
+    - 行距：固定值 23.0 磅
+    - 大纲级别：1 级
+    - 内部样式：FlowReferencesHeading
+    sample:
+      index: 268
+      text: 参考文献
+    confidence: 0.9
+    evidence:
+    - '嗅探角色: references_heading'
+    - '样本段落序号: 268'
+    - '样式继承链: 章标题 -> Normal'
+    sources:
+      alignment: 章标题 -> Normal
+      space_after_pt: paragraph/style/default
+      first_line_indent_pt: paragraph/style/default
+      line_spacing_pt: paragraph/style/default
+      outline_level: paragraph/style/default
+      font_name: run/style/default
+      font_size_pt: run/style/default
+      east_asia_font: rFonts inheritance
+      ascii_font: rFonts inheritance
+      hansi_font: rFonts inheritance
+    style_chain:
+    - 章标题
+    - Normal
+    priority: 10
+  warnings: []
+profiles:
+  toc_visual:
+    has_dot_leader: true
+    page_number_alignment: right
+    entry_styles:
+      '1': TOC 1
+      '2': TOC 2
+      '3': TOC 3
+  front_matter:
+    abstract_body:
+      semantic_role: abstract_body
+      prefix_label: 摘要
+      label_font_bold: true
+      label_font_name: 黑体
+      label_font_size_pt: 14.0
+      content_style: FlowAbstractBody
+      no_first_line_indent: true
+    keywords:
+      semantic_role: keywords
+      prefix_label: 关键词：
+      label_font_bold: true
+      label_font_name: 黑体
+      label_font_size_pt: 16.0
+      content_style: FlowKeywords
+      no_first_line_indent: true
+    abstract_body_en:
+      semantic_role: abstract_body_en
+      prefix_label: ABSTRACT
+      label_font_bold: true
+      label_font_name: Times New Roman
+      label_font_size_pt: 14.0
+      content_style: FlowAbstractBodyEN
+      no_first_line_indent: true
+    keywords_en:
+      semantic_role: keywords_en
+      prefix_label: KEY WORDS
+      label_font_bold: true
+      label_font_name: Times New Roman
+      label_font_size_pt: 16.0
+      content_style: FlowKeywordsEN
+      no_first_line_indent: true
+  reference:
+    entry_style: FlowReferencesItem
+    right_indent_pt: 24.0
+    line_spacing_pt: 23.0
+  acknowledgment:
+    body_style: FlowAcknowledgmentBody
+    first_line_indent_pt: 24.0
+    right_indent_pt: 24.0
+    line_spacing_pt: 23.0
+  page_break_decisions: {}
+rules:
+- id: title_cn
+  selector:
+    semantic_role: title_cn
+  apply:
+    font_name: 黑体
+    east_asia_font: 黑体
+    ascii_font: 黑体
+    hansi_font: Times New Roman
+    font_size_pt: 24.0
+    bold: true
+    alignment: center
+    first_line_indent_pt: 48.2
+    line_spacing_pt: 23.0
+    style_name: FlowTitleCN
+  priority: 30
+- id: heading_level_1
+  selector:
+    node_kind: heading
+    level: 1
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 黑体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 16.0
+    alignment: center
+    space_after_pt: 31.2
+    first_line_indent_pt: 18.0
+    line_spacing_pt: 23.0
+    style_name: FlowHeading1
+    outline_level: 0
+  priority: 1
+- id: heading_level_2
+  selector:
+    node_kind: heading
+    level: 2
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 黑体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    alignment: justify
+    space_before_pt: 7.8
+    first_line_indent_pt: 0.0
+    line_spacing_pt: 23.0
+    style_name: FlowHeading2
+    outline_level: 1
+  priority: 1
+- id: body_paragraph
+  selector:
+    node_kind: paragraph
+    region: body
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    alignment: justify
+    first_line_indent_pt: 24.0
+    line_spacing_pt: 23.0
+    style_name: FlowBody
+  priority: 1
+- id: keywords
+  selector:
+    semantic_role: keywords
+  apply:
+    font_name: 黑体
+    east_asia_font: 黑体
+    ascii_font: 黑体
+    hansi_font: 黑体
+    font_size_pt: 16.0
+    bold: true
+    alignment: justify
+    first_line_indent_pt: 0.0
+    line_spacing_pt: 23.0
+    style_name: FlowKeywords
+  priority: 20
+- id: keywords_en
+  selector:
+    semantic_role: keywords_en
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 16.0
+    bold: true
+    alignment: justify
+    first_line_indent_pt: 0.0
+    line_spacing_pt: 23.0
+    style_name: FlowKeywordsEN
+  priority: 20
+- id: references_heading
+  selector:
+    semantic_role: references
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 黑体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 16.0
+    alignment: center
+    space_after_pt: 31.2
+    first_line_indent_pt: 18.0
+    line_spacing_pt: 23.0
+    style_name: FlowReferencesHeading
+    outline_level: 0
+  priority: 10
+- id: title_en
+  selector:
+    semantic_role: title_en
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 18.0
+    bold: true
+    alignment: center
+    space_after_pt: 0.0
+    first_line_indent_pt: 0.0
+    line_spacing_pt: 23.0
+    style_name: FlowTitleEN
+  priority: 20
+- id: abstract_body
+  selector:
+    semantic_role: abstract_body
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    alignment: justify
+    space_after_pt: 0.0
+    first_line_indent_pt: 0.0
+    line_spacing_pt: 23.0
+    style_name: FlowAbstractBody
+  priority: 20
+- id: abstract_body_en
+  selector:
+    semantic_role: abstract_body_en
+  apply:
+    font_name: Times New Roman
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    alignment: justify
+    space_after_pt: 0.0
+    first_line_indent_pt: 0.0
+    line_spacing_pt: 23.0
+    style_name: FlowAbstractBodyEN
+  priority: 20
+- id: references_item
+  selector:
+    semantic_role: references_item
+  apply:
+    font_name: 宋体
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    right_indent_pt: 24.0
+    line_spacing_pt: 23.0
+    style_name: FlowReferencesItem
+  priority: 20
+- id: acknowledgment_body
+  selector:
+    semantic_role: acknowledgment_body
+  apply:
+    font_name: 宋体
+    east_asia_font: 宋体
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    alignment: justify
+    first_line_indent_pt: 24.0
+    right_indent_pt: 24.0
+    line_spacing_pt: 23.0
+    style_name: FlowAcknowledgmentBody
+  priority: 20
+- id: generated_toc_anchor
+  selector:
+    node_kind: generated_anchor
+    anchor_type: toc
+  apply:
+    font_name: SimHei
+    east_asia_font: SimHei
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 12.0
+    bold: true
+    alignment: center
+    space_before_pt: 12.0
+    space_after_pt: 12.0
+    style_name: FlowTocPlaceholder
+    generated_anchor_type: toc
+    generated_anchor_text: '[TOC will be generated here]'
+  priority: 20
+- id: opaque_placeholder
+  selector:
+    node_kind: opaque
+  apply:
+    font_name: SimSun
+    east_asia_font: SimSun
+    ascii_font: Times New Roman
+    hansi_font: Times New Roman
+    font_size_pt: 10.5
+    alignment: center
+    space_before_pt: 6.0
+    space_after_pt: 6.0
+    style_name: FlowOpaquePlaceholder
+    opaque_placeholder_text: '[UNSUPPORTED OPAQUE: {opaque_type}]'
+  priority: 1

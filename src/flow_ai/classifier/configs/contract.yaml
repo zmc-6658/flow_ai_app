@@ -1,0 +1,18 @@
+doc_type: contract
+structural_rules:
+  - name: clause_cn
+    pattern: '^\s*第[一二三四五六七八九十百]+条'
+    role: HEADING_1
+    level: 1
+    confidence: 0.99
+  - name: clause_num
+    pattern: '^\s*\d+\.\d+\s+[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_2
+    level: 2
+    confidence: 0.85
+special_anchors:
+  - pattern: '^\s*附\s*件\s*$'
+    role: APPENDIX_ANCHOR
+    semantic_role: appendix
+    confidence: 0.99
+toc_markers: []

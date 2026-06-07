@@ -1,0 +1,56 @@
+doc_type: thesis
+structural_rules:
+  - name: chapter_cn
+    pattern: '^\s*第[一二三四五六七八九十百零〇两]+[章部分]'
+    role: HEADING_1
+    level: 1
+    confidence: 0.99
+  - name: chapter_dun
+    pattern: '^\s*[一二三四五六七八九十]+[、\s]+[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_1
+    level: 1
+    confidence: 0.95
+  - name: section_decimal
+    pattern: '^\s*(?P<marker>\d+\.\d+)\s+[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_2
+    level: 2
+    confidence: 0.85
+  - name: subsection_decimal
+    pattern: '^\s*(?P<marker>\d+\.\d+\.\d+)\s+[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_3
+    level: 3
+    confidence: 0.80
+  - name: subsubsection_decimal
+    pattern: '^\s*(?P<marker>\d+\.\d+\.\d+\.\d+)\s+[\u4e00-\u9fffA-Za-z]'
+    role: HEADING_4
+    level: 4
+    confidence: 0.70
+  - name: list_item
+    pattern: '^\s*(?:\d+\.|（\d+）)\s*[\u4e00-\u9fffA-Za-z]'
+    role: LIST_ITEM
+    level: 4
+    confidence: 0.60
+special_anchors:
+  - pattern: '^\s*摘\s*要\s*$'
+    role: ABSTRACT_ANCHOR
+    semantic_role: abstract
+    confidence: 0.99
+  - pattern: '^\s*Abstract\s*$'
+    role: ABSTRACT_ANCHOR
+    semantic_role: abstract
+    confidence: 0.99
+  - pattern: '^\s*目\s*录\s*$'
+    role: TOC_ANCHOR
+    semantic_role: toc
+    confidence: 0.99
+  - pattern: '^\s*参\s*考\s*文\s*献\s*$'
+    role: REFERENCES_ANCHOR
+    semantic_role: references
+    confidence: 0.99
+  - pattern: '^\s*致\s*谢\s*$'
+    role: ACK_ANCHOR
+    semantic_role: acknowledgment
+    confidence: 0.99
+toc_markers:
+  - '^\s*目\s*录\s*$'
+  - '^\s*Contents\s*$'

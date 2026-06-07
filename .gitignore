@@ -1,0 +1,28 @@
+# Build artifacts
+build/
+dist/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.spec.bak
+
+# Environment variables
+.env
+.env.*
+
+# IDE config
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flow-ai-app"
+version = "0.1.0"
+description = "Flow-AI 桌面应用打包配置"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "pydantic>=2.0.0",
+    "python-docx>=0.8.11",
+    "lxml>=4.9.0",
+    "PyYAML>=6.0.0",
+]
+
+[project.optional-dependencies]
+build = [
+    "pyinstaller>=6.0.0",
+]
